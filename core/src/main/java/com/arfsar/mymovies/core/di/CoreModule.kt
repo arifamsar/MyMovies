@@ -21,7 +21,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 const val baseUrl = BuildConfig.baseUrl
-const val apiKey = BuildConfig.apiKey
 const val token = BuildConfig.token
 
 val databaseModule = module {

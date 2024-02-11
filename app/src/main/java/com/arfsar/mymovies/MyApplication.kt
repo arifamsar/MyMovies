@@ -1,7 +1,6 @@
 package com.arfsar.mymovies
 
 import android.app.Application
-import com.arfsar.mymovies.core.data.source.local.preferences.dataStore
 import com.arfsar.mymovies.core.di.dataStoreModule
 import com.arfsar.mymovies.core.di.databaseModule
 import com.arfsar.mymovies.core.di.networkModule

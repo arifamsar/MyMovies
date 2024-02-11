@@ -1,7 +1,6 @@
 package com.arfsar.mymovies.core.data.source.local
 
 import com.arfsar.mymovies.core.data.source.local.entity.MoviesEntity
-import com.arfsar.mymovies.core.data.source.local.preferences.SettingsPreferences
 import com.arfsar.mymovies.core.data.source.local.room.MoviesDao
 import kotlinx.coroutines.flow.Flow
 

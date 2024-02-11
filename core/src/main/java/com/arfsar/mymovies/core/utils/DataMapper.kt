@@ -1,11 +1,8 @@
 package com.arfsar.mymovies.core.utils
 
-import androidx.paging.PagingSource
 import com.arfsar.mymovies.core.data.source.local.entity.MoviesEntity
 import com.arfsar.mymovies.core.data.source.remote.response.DetailMoviesResponse
-import com.arfsar.mymovies.core.data.source.remote.response.GenresItem
 import com.arfsar.mymovies.core.data.source.remote.response.MovieResponseItem
-import com.arfsar.mymovies.core.data.source.remote.response.SearchResponse
 import com.arfsar.mymovies.core.domain.model.Movies
 
 object DataMapper {

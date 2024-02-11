@@ -5,7 +5,6 @@ import com.arfsar.mymovies.core.data.source.remote.network.ApiResponse
 import com.arfsar.mymovies.core.data.source.remote.network.ApiService
 import com.arfsar.mymovies.core.data.source.remote.response.DetailMoviesResponse
 import com.arfsar.mymovies.core.data.source.remote.response.MovieResponseItem
-import com.arfsar.mymovies.core.data.source.remote.response.SearchResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -6,13 +6,11 @@ import com.arfsar.mymovies.core.data.source.remote.RemoteDataSource
 import com.arfsar.mymovies.core.data.source.remote.network.ApiResponse
 import com.arfsar.mymovies.core.data.source.remote.response.DetailMoviesResponse
 import com.arfsar.mymovies.core.data.source.remote.response.MovieResponseItem
-import com.arfsar.mymovies.core.data.source.remote.response.SearchResponse
 import com.arfsar.mymovies.core.domain.model.Movies
 import com.arfsar.mymovies.core.domain.repository.IMoviesRepository
 import com.arfsar.mymovies.core.utils.AppExecutors
 import com.arfsar.mymovies.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class MoviesRepository(

@@ -1,7 +1,6 @@
 package com.arfsar.mymovies.core.domain.model
 
 import android.os.Parcelable
-import com.arfsar.mymovies.core.data.source.remote.response.GenresItem
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

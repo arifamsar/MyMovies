@@ -26,7 +26,6 @@ annotation = "1.7.1"
 androidPlayCore = "1.10.3"
 
 [libraries]
-android-tools-build-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-material = { module = "com.google.android.material:material", version.ref = "material" }
@@ -55,9 +54,7 @@ room-paging-runtime = { module = "androidx.paging:paging-runtime-ktx", version.r
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
 androidx-swipeRefresh = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipeRefresh" }
 androidx-dataStorePreferences = { module = "androidx.datastore:datastore-preferences", version.ref = "dataStorePreferences" }
-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 androidx-navigation-dynamic-features-fragment = { group = "androidx.navigation", name = "navigation-dynamic-features-fragment", version.ref = "navigation" }
-androidx-playCore = { module = "com.google.android.play:core", version.ref = "androidPlayCore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
