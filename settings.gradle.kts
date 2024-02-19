@@ -6,7 +6,6 @@ include(":favorite")
 include(":core")
 
 
-
 pluginManagement {
     repositories {
         google()
