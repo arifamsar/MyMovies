@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import com.arfsar.mymovies.core.domain.model.Movies
 import com.arfsar.mymovies.core.ui.MoviesAdapter
 import com.arfsar.mymovies.favorite.databinding.FragmentFavoriteBinding
 import com.arfsar.mymovies.ui.detail.DetailActivity
@@ -16,8 +17,8 @@ import org.koin.core.context.loadKoinModules
 
 class FavoriteFragment : Fragment() {
 
-    private lateinit var _binding: FragmentFavoriteBinding
-    private val binding get() = _binding
+    private var _binding: FragmentFavoriteBinding? = null
+    private val binding get() = _binding!!
 
     private val favoriteViewModel: FavoriteViewModel by viewModel()
 
@@ -61,4 +62,9 @@ class FavoriteFragment : Fragment() {
         }
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

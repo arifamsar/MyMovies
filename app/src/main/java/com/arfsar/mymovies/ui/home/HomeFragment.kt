@@ -22,16 +22,18 @@ class HomeFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by viewModel()
 
-    private lateinit var _binding: FragmentHomeBinding
-    private lateinit var settingBinding: FragmentSettingsBinding
-    private val binding get() = _binding
+    private var _binding: FragmentHomeBinding? = null
+    private var _settingBinding: FragmentSettingsBinding? = null
+
+    private val binding get() = _binding!!
+    private val settingBinding get() = _settingBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        settingBinding = FragmentSettingsBinding.inflate(inflater, container, false)
+        _settingBinding = FragmentSettingsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -137,6 +139,13 @@ class HomeFragment : Fragment() {
             homeViewModel.saveThemeSetting(isChecked)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        _settingBinding = null
+    }
+
     companion object {
         const val EXTRA_DATA = "extra_data"
     }

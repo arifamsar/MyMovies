@@ -11,8 +11,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment : Fragment() {
 
-    private lateinit var _binding: FragmentSettingsBinding
-    private val binding get() = _binding
+    private var _binding: FragmentSettingsBinding? = null
+    private val binding get() = _binding!!
 
     private val settingsViewModel: SettingsViewModel by viewModel()
 
@@ -27,22 +27,30 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val switchTheme = binding.switchTheme
+        if (activity != null) {
+            val switchTheme = binding.switchTheme
 
-        settingsViewModel.getThemeSetting().observe(viewLifecycleOwner) { state: Boolean ->
-            if (state) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                switchTheme.isChecked = true
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                switchTheme.isChecked = false
+            settingsViewModel.getThemeSetting().observe(viewLifecycleOwner) { state: Boolean ->
+                if (state) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    switchTheme.isChecked = true
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    switchTheme.isChecked = false
+                }
+            }
+
+            switchTheme.setOnCheckedChangeListener { _, isChecked ->
+                settingsViewModel.saveThemeSetting(isChecked)
             }
         }
 
-        switchTheme.setOnCheckedChangeListener { _, isChecked ->
-            settingsViewModel.saveThemeSetting(isChecked)
-        }
-
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
 }
