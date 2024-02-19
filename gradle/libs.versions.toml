@@ -14,7 +14,7 @@ navigation = "2.7.7"
 koin = "3.5.3"
 glide = "4.16.0"
 room = "2.6.1"
-coroutines = "1.7.3"
+coroutines = "1.8.0"
 retrofit = "2.9.0"
 okhttp = "4.12.0"
 legacy = "1.0.0"
@@ -24,6 +24,8 @@ swipeRefresh = "1.2.0-alpha01"
 dataStorePreferences = "1.0.0"
 annotation = "1.7.1"
 androidPlayCore = "1.10.3"
+shimmer = "0.5.0"
+leakCanary = "2.13"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -55,6 +57,8 @@ androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "ro
 androidx-swipeRefresh = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipeRefresh" }
 androidx-dataStorePreferences = { module = "androidx.datastore:datastore-preferences", version.ref = "dataStorePreferences" }
 androidx-navigation-dynamic-features-fragment = { group = "androidx.navigation", name = "navigation-dynamic-features-fragment", version.ref = "navigation" }
+facebook-shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+leakCanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

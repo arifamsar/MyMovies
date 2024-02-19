@@ -50,9 +50,11 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.glide)
     implementation(libs.androidx.dataStorePreferences)
+    implementation(libs.facebook.shimmer)
     testImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.androidx.test.junitExt)
     androidTestImplementation(libs.androidx.test.espresso)
+    debugImplementation(libs.leakCanary)
 
     // room
     implementation(libs.room.ktx)

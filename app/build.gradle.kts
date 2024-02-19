@@ -40,6 +40,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
     dynamicFeatures += setOf(":favorite")
 }
@@ -55,6 +56,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.androidx.material)
     implementation(libs.androidx.swipeRefresh)
+    implementation(libs.facebook.shimmer)
+    debugImplementation(libs.leakCanary)
 
     // navigation
     implementation(libs.androidx.navigation.frag)
