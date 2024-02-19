@@ -34,7 +34,7 @@ class MoviesRepository(
                 localDataSource.insertMovies(movieList)
             }
 
-            override fun shouldFetch(data: List<Movies>?): Boolean = true
+            override fun shouldFetch(data: List<Movies>?): Boolean = data.isNullOrEmpty()
 
         }.asFlow()
 
