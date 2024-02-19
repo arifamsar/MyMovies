@@ -13,6 +13,7 @@ import com.arfsar.mymovies.core.domain.repository.IMoviesRepository
 import com.arfsar.mymovies.core.utils.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,7 +29,7 @@ const val token = BuildConfig.token
 val databaseModule = module {
     factory { get<MoviesDatabase>().moviesDao() }
     single {
-        val passphrase: ByteArray = SQLiteDatabase.getBytes("mymovies".toCharArray())
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("arfsar".toCharArray())
         val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
@@ -47,10 +48,18 @@ val dataStoreModule = module {
 
 val networkModule = module {
     single {
+        val hostname = "api.themoviedb.org"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/5VLcahb6x4EvvFrCF2TePZulWqrLHS2jCg9Ywv6JHog=")
+            .add(hostname, "sha256/vxRon/El5KuI4vx5ey1DgmsYmRY0nDd5Cg4GfJ8S+bg=")
+            .add(hostname, "sha256/++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=")
+            .add(hostname, "sha256/KwccWaCgrnaw6tsrrSO61FgLacNgG2MMLq8GE6+oP5I=")
+            .build()
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .build()
     }
     single {
