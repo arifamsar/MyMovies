@@ -76,4 +76,8 @@ dependencies {
     // koin
     implementation(libs.koin.android)
     implementation(libs.koin.core)
+
+    // encryption
+    implementation(libs.sqlcipher)
+    implementation(libs.sqllite)
 }

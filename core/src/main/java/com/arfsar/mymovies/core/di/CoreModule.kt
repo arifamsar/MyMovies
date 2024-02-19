@@ -11,6 +11,8 @@ import com.arfsar.mymovies.core.data.source.remote.RemoteDataSource
 import com.arfsar.mymovies.core.data.source.remote.network.ApiService
 import com.arfsar.mymovies.core.domain.repository.IMoviesRepository
 import com.arfsar.mymovies.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,10 +28,14 @@ const val token = BuildConfig.token
 val databaseModule = module {
     factory { get<MoviesDatabase>().moviesDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("mymovies".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             MoviesDatabase::class.java, "Movies.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
