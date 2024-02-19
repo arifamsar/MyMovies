@@ -124,18 +124,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun switchThemeSetting(switch: SwitchMaterial) {
-        val switchTheme = settingBinding.switchTheme
         homeViewModel.getThemeSetting().observe(viewLifecycleOwner) { state: Boolean ->
             if (state) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                switchTheme.isChecked = true
+                switch.isChecked = true
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                switchTheme.isChecked = false
+                switch.isChecked = false
             }
         }
 
-        switchTheme.setOnCheckedChangeListener { _, isChecked ->
+        switch.setOnCheckedChangeListener { _, isChecked ->
             homeViewModel.saveThemeSetting(isChecked)
         }
     }

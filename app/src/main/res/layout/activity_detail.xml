@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            app:popupTheme="@style/Theme.AppCompat"/>
+            app:popupTheme="@style/Theme.AppCompat" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -78,27 +78,17 @@
                     android:text="@string/release_date"
                     android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+
+                <TextView
+                    android:id="@+id/tv_rating"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="0dp"
+                    android:textSize="16sp"
+                    tools:text="4.9"
+                    app:drawableLeftCompat="@drawable/ic_star_rate" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_star_rate" />
-
-                    <TextView
-                        android:id="@+id/tv_rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        android:layout_marginStart="0dp"
-                        android:textSize="16sp"
-                        tools:text="4.9" />
-
-                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
@@ -135,11 +125,11 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
+        android:contentDescription="@string/add_to_favorite"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_favorite_border"
-        android:contentDescription="@string/add_to_favorite" />
+        app:srcCompat="@drawable/ic_favorite_border" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -147,11 +137,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <include
         android:id="@+id/view_error"
