@@ -50,18 +50,24 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         val moviesAdapter = MoviesAdapter()
-        moviesAdapter.onItemClick = { selectedData ->
-            val intent = Intent(activity, DetailActivity::class.java)
-            intent.putExtra(EXTRA_DATA, selectedData.movieId)
-            startActivity(intent)
-        }
-
         val mLayoutManager = GridLayoutManager(context, 2)
         with(binding.rvMovies) {
             layoutManager = mLayoutManager
             setHasFixedSize(true)
             adapter = moviesAdapter
         }
+
+        moviesAdapter.setOnItemClickCallback(object : MoviesAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Movies) {
+                getDetailMovie(data)
+            }
+        })
+    }
+
+    private fun getDetailMovie(data: Movies) {
+        val intent = Intent(activity, DetailActivity::class.java)
+        intent.putExtra(EXTRA_DATA, data.movieId)
+        startActivity(intent)
     }
 
     private fun setupObservers() {
@@ -75,10 +81,12 @@ class HomeFragment : Fragment() {
         when (movies) {
             is Resource.Loading -> {
                 binding.progressBar.visibility = View.VISIBLE
+                binding.rvMovies.visibility = View.GONE
             }
             is Resource.Success -> {
                 binding.progressBar.visibility = View.GONE
-                moviesAdapter.setData(movies.data)
+                binding.rvMovies.visibility = View.VISIBLE
+                moviesAdapter.submitList(movies.data)
             }
             is Resource.Error -> {
                 binding.progressBar.visibility = View.GONE

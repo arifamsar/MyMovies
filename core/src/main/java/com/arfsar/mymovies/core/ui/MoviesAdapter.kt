@@ -1,9 +1,9 @@
 package com.arfsar.mymovies.core.ui
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.arfsar.mymovies.core.BuildConfig
 import com.arfsar.mymovies.core.databinding.ItemListMoviesBinding
@@ -11,50 +11,62 @@ import com.arfsar.mymovies.core.domain.model.Movies
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ListViewHolder>() {
+class MoviesAdapter : ListAdapter<Movies, MoviesAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
-    private var listData = ArrayList<Movies>()
-    var onItemClick: ((Movies) -> Unit)? = null
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(newListData: List<Movies>?) {
-        if (newListData == null) return
-        listData.clear()
-        listData.addAll(newListData)
-        notifyDataSetChanged()
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemListMoviesBinding.bind(itemView)
-        fun bind(data: Movies) {
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Movies)
+    }
+
+    inner class ListViewHolder(private val binding: ItemListMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(movie: Movies) {
             with(binding) {
-                val fullImageUrl = "${BuildConfig.imageUrl}${data.poster}"
+                val fullImageUrl = "${BuildConfig.imageUrl}${movie.poster}"
                 Glide.with(itemView.context)
                     .load(fullImageUrl)
                     .apply(RequestOptions().override(400, 400))
                     .into(ivPoster)
-                tvTitle.text = data.title
-                tvDescription.text = data.overview
-            }
-        }
-
-        init {
-            binding.root.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
+                tvTitle.text = movie.title
+                tvDescription.text = movie.overview
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val binding = ItemListMoviesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ListViewHolder(binding.root)
+        return ListViewHolder(binding)
     }
 
-    override fun getItemCount() = listData.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val data = listData[position]
-        holder.bind(data)
+        val data = getItem(position)
+        if (data != null) {
+            holder.bind(data)
+            holder.itemView.setOnClickListener {
+                getItem(position)?.let {
+                    onItemClickCallback.onItemClicked(it)
+                }
+            }
+        }
+    }
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movies>() {
+            override fun areItemsTheSame(oldItem: Movies, newItem: Movies): Boolean {
+                return oldItem.movieId == newItem.movieId
+            }
+            override fun areContentsTheSame(oldItem: Movies, newItem: Movies): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 
 }
+
+

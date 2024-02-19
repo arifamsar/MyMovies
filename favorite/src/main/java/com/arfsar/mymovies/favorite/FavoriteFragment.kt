@@ -36,12 +36,6 @@ class FavoriteFragment : Fragment() {
 
         if (activity != null) {
             val moviesAdapter = MoviesAdapter()
-            moviesAdapter.onItemClick = { selectedData ->
-                val intent = Intent(activity, DetailActivity::class.java)
-                intent.putExtra(EXTRA_DATA, selectedData.movieId)
-                startActivity(intent)
-            }
-
             val mLayoutManager = GridLayoutManager(context, 2)
             with(binding.rvMovies) {
                 layoutManager = mLayoutManager
@@ -50,9 +44,18 @@ class FavoriteFragment : Fragment() {
             }
 
             favoriteViewModel.favoriteMovies.observe(viewLifecycleOwner) { dataMovies ->
-                moviesAdapter.setData(dataMovies)
+                moviesAdapter.submitList(dataMovies)
                 binding.viewEmpty.root.visibility = if (dataMovies.isNotEmpty()) View.GONE else View.VISIBLE
             }
+
+            moviesAdapter.setOnItemClickCallback(object : MoviesAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: Movies) {
+                    val intent = Intent(context, DetailActivity::class.java)
+                    intent.putExtra(EXTRA_DATA, data.movieId)
+                    startActivity(intent)
+                }
+
+            })
 
 
         }
