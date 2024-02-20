@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.material)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.lottie)
 
     implementation(libs.androidx.navigation.frag)
     implementation(libs.androidx.navigation.ui)
