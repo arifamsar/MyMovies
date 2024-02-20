@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.arfsar.mymovies.core.domain.model.Movies
 import com.arfsar.mymovies.core.ui.MoviesAdapter
 import com.arfsar.mymovies.favorite.databinding.FragmentFavoriteBinding
-import com.arfsar.mymovies.ui.detail.DetailActivity
-import com.arfsar.mymovies.ui.home.HomeFragment.Companion.EXTRA_DATA
+import com.arfsar.mymovies.presentation.detail.DetailActivity
+import com.arfsar.mymovies.presentation.home.HomeFragment.Companion.EXTRA_DATA
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 

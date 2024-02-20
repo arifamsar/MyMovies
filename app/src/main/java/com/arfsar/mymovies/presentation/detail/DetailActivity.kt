@@ -1,4 +1,4 @@
-package com.arfsar.mymovies.ui.detail
+package com.arfsar.mymovies.presentation.detail
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,7 @@ import com.arfsar.mymovies.core.BuildConfig
 import com.arfsar.mymovies.core.data.Resource
 import com.arfsar.mymovies.core.domain.model.Movies
 import com.arfsar.mymovies.databinding.ActivityDetailBinding
-import com.arfsar.mymovies.ui.home.HomeFragment.Companion.EXTRA_DATA
+import com.arfsar.mymovies.presentation.home.HomeFragment.Companion.EXTRA_DATA
 import com.bumptech.glide.Glide
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

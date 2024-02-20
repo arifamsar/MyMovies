@@ -1,4 +1,4 @@
-package com.arfsar.mymovies.ui.detail
+package com.arfsar.mymovies.presentation.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

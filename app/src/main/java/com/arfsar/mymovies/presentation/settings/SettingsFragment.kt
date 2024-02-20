@@ -1,4 +1,4 @@
-package com.arfsar.mymovies.ui.settings
+package com.arfsar.mymovies.presentation.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater

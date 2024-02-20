@@ -1,4 +1,4 @@
-package com.arfsar.mymovies.ui.home
+package com.arfsar.mymovies.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +14,7 @@ import com.arfsar.mymovies.core.domain.model.Movies
 import com.arfsar.mymovies.core.ui.MoviesAdapter
 import com.arfsar.mymovies.databinding.FragmentHomeBinding
 import com.arfsar.mymovies.databinding.FragmentSettingsBinding
-import com.arfsar.mymovies.ui.detail.DetailActivity
+import com.arfsar.mymovies.presentation.detail.DetailActivity
 import com.google.android.material.switchmaterial.SwitchMaterial
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -12,9 +12,6 @@ data class MovieResponseItem(
     @field:SerializedName("original_title")
     val originalTitle: String,
 
-    @field:SerializedName("video")
-    val video: Boolean,
-
     @field:SerializedName("title")
     val title: String,
 
@@ -38,9 +35,6 @@ data class MovieResponseItem(
 
     @field:SerializedName("id")
     val id: Int,
-
-    @field:SerializedName("adult")
-    val adult: Boolean,
 
     @field:SerializedName("vote_count")
     val voteCount: Int

@@ -46,13 +46,9 @@ class MoviesAdapter : ListAdapter<Movies, MoviesAdapter.ListViewHolder>(DIFF_CAL
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val data = getItem(position)
-        if (data != null) {
-            holder.bind(data)
-            holder.itemView.setOnClickListener {
-                getItem(position)?.let {
-                    onItemClickCallback.onItemClicked(it)
-                }
-            }
+        holder.bind(data)
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(data)
         }
     }
 
