@@ -60,7 +60,7 @@ jobs:
 
       - run:
           name: Run Build
-          command: ./gradlew build --info
+          command: ./gradlew assembleDebug
 
       - store_artifacts: 
           path: app/build/reports
@@ -80,7 +80,7 @@ jobs:
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  debug: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
