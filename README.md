@@ -10,3 +10,5 @@
 Because this project based on TheMovieDB you can get the API from this website https://developer.themoviedb.org/docs/getting-started
 
 This is just small projects for learning purpose, also for submitting my class for android expert in dicoding
+
+[![<arifamsar>](https://circleci.com/<gh>/<arifamsar>/<MyMovies>.svg?style=svg)](<LINK>)
