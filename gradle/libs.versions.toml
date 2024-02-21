@@ -23,8 +23,10 @@ swipeRefresh = "1.2.0-alpha01"
 dataStorePreferences = "1.0.0"
 shimmer = "0.5.0"
 leakCanary = "2.13"
-sqlcipher = "4.4.3"
+sqlcipher = "4.5.4"
 sqllite = "2.4.0"
+lottie = "6.3.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -59,6 +61,7 @@ facebook-shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shi
 leakCanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary" }
 sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "sqlcipher" }
 sqllite = { module = "androidx.sqlite:sqlite-ktx", version.ref = "sqllite" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
